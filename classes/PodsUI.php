@@ -2094,6 +2094,11 @@ class PodsUI {
             if ( empty( $find_params[ 'where' ] ) && $this->restricted( $this->action ) )
                 $find_params[ 'where' ] = $this->pods_data->query_fields( $this->restrict[ $this->action ], ( is_object( $this->pod ) ? $this->pod->pod_data : null ) );
 
+            if ( empty( $find_params[ 'where' ] ) )
+            {
+                $find_params[ 'where' ] = '1 = 1';
+            }
+
             if ( $params->full )
                 $find_params[ 'limit' ] = -1;
 
